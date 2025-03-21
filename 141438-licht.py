@@ -77,7 +77,14 @@ class XeonDataProcessor:
                 datasets.append(ds.with_format("torch"))
             except Exception as e:
                 print(f"Fout bij laden {ds_name}: {str(e)}")
-        
+            
+        print(f"Number of datasets loaded: {len(datasets)}")
+        print(f"Number of probabilities: {len([w for _, w in self.config.datasets])}")
+
+            # Ensure the number of datasets matches the number of probabilities
+        if len(datasets) != len(self.config.datasets):
+            raise ValueError("The number of datasets and probabilities must match.")
+                
         return interleave_datasets(
             datasets,
             probabilities=[w for _, w in self.config.datasets],
