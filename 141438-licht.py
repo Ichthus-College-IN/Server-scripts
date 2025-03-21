@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import torch
 from transformers import (
     AutoModelForCausalLM,
@@ -18,10 +19,10 @@ class XeonRPGConfig:
         
         # Meerdere RPG datasets
         self.datasets = [
-            ("ChrisHayesAI/RPG_Story_Generation", 0.3),
-            ("openai/webtext", 0.2),
+            ("NeuralNovel/Neural-Story-v1", 0.3),
+            ("AtlasUnified/atlas-storyteller", 0.2),
             ("bookcorpus", 0.2),
-            ("gutenberg", 0.2),
+            ("jaydenccc/AI_Storyteller_Dataset", 0.3),
             ("narrativeqa", 0.1)
         ]
         
@@ -138,8 +139,12 @@ def train_xeon_model():
     )
     
     trainer.train()
-    model.save_pretrained(config.output_dir)
-    processor.tokenizer.save_pretrained(config.output_dir)
+    model_save_path = "./chatneo_finetuned_cpu"
+    os.makedirs(model_save_path, exist_ok=True)  # Create the directory if it doesn't exist
+
+# Save the (fine-tuned) model and tokenizer
+   model.save_pretrained(model_save_path)
+   tokenizer.save_pretrained(model_save_path)
 
 # 5. Gebruiksvoorbeeld
 if __name__ == "__main__":
