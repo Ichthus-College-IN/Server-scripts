@@ -37,13 +37,13 @@ class XeonRPGConfig:
         )
         
         self.output_dir = "./xeon_rpg_generator"
+        os.makedirs(self.output_dir, exist_ok=True)
+
         self.num_train_epochs = 5
         self.per_device_batch_size = 2
         self.gradient_accumulation_steps = 4
         self.learning_rate = 3e-5
         self.weight_decay = 0.05
-        
-        os.makedirs(self.output_dir, exist_ok=True)
 
 # 2. Geavanceerde data preprocessing
 class XeonDataProcessor:
