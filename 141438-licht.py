@@ -54,7 +54,8 @@ class XeonDataProcessor:
 
     def _process_batch(self, examples):
         processed = []
-        for story in examples["text"]:  # Aangepast om met verschillende datasets te werken
+        # Check for the expected column names and process accordingly
+        for story in examples.get("text", examples.get("story", [])):
             prompt = f"### Verhaal:\n{story}\n### Wat wil je doen?\n1. Ga verder met het verhaal.\n2. Geef je eigen optie.\n"
             processed.append(prompt)
         return {"text": processed}
