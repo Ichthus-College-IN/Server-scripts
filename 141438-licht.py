@@ -42,6 +42,8 @@ class XeonRPGConfig:
         self.gradient_accumulation_steps = 4
         self.learning_rate = 3e-5
         self.weight_decay = 0.05
+        
+        os.makedirs(self.output_dir, exist_ok=True)
 
 # 2. Geavanceerde data preprocessing
 class XeonDataProcessor:
