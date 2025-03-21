@@ -143,8 +143,8 @@ def train_xeon_model():
     os.makedirs(model_save_path, exist_ok=True)  # Create the directory if it doesn't exist
 
 # Save the (fine-tuned) model and tokenizer
-   model.save_pretrained(model_save_path)
-   tokenizer.save_pretrained(model_save_path)
+    model.save_pretrained(model_save_path)
+    tokenizer.save_pretrained(model_save_path)
 
 # 5. Gebruiksvoorbeeld
 if __name__ == "__main__":
