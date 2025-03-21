@@ -69,7 +69,7 @@ class XeonDataProcessor:
                 ds = ds.map(
                     self._process_batch,
                     batched=True,
-                    batch_size=1000,
+                    batch_size=2000,
                     num_proc=self.config.num_proc,
                     remove_columns=ds.column_names
                 )
