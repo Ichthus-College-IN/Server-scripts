@@ -19,10 +19,10 @@ class XeonRPGConfig:
         
         # Meerdere RPG datasets
         self.datasets = [
-            ("NeuralNovel/Neural-Story-v1", 0.3),
-            ("AtlasUnified/atlas-storyteller", 0.2),
-            ("bookcorpus", 0.2),
-            ("jaydenccc/AI_Storyteller_Dataset", 0.3)
+            ("NeuralNovel/Neural-Story-v1", 0.15),
+            ("AtlasUnified/atlas-storyteller", 0.25),
+            ("bookcorpus", 0.50),
+            ("jaydenccc/AI_Storyteller_Dataset", 0.10)
         ]
         
         self.max_length = 512
