@@ -64,7 +64,7 @@ class XeonDataProcessor:
         for ds_name, weight in self.config.datasets:
             try:
                 print("Loading datasets:")
-                ds = load_dataset(ds_name, split="train", num_proc=self.config.num_proc,features={"text": "string"}) 
+                ds = load_dataset(ds_name, split="train", num_proc=self.config.num_proc) 
                 print("Mapping:")
                 ds = ds.map(
                     self._process_batch,
