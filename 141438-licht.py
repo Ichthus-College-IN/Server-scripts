@@ -22,8 +22,7 @@ class XeonRPGConfig:
             ("NeuralNovel/Neural-Story-v1", 0.3),
             ("AtlasUnified/atlas-storyteller", 0.2),
             ("bookcorpus", 0.2),
-            ("jaydenccc/AI_Storyteller_Dataset", 0.3),
-            ("narrativeqa", 0.1)
+            ("jaydenccc/AI_Storyteller_Dataset", 0.3)
         ]
         
         self.max_length = 512
@@ -62,7 +61,9 @@ class XeonDataProcessor:
         datasets = []
         for ds_name, weight in self.config.datasets:
             try:
+                print("Loading datasets:")
                 ds = load_dataset(ds_name, split="train", num_proc=self.config.num_proc)
+                print("Mapping:")
                 ds = ds.map(
                     self._process_batch,
                     batched=True,
@@ -70,6 +71,7 @@ class XeonDataProcessor:
                     num_proc=self.config.num_proc,
                     remove_columns=ds.column_names
                 )
+                print("Append datasets:")
                 datasets.append(ds.with_format("torch"))
             except Exception as e:
                 print(f"Fout bij laden {ds_name}: {str(e)}")
